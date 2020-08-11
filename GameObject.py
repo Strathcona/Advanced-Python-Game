@@ -12,6 +12,7 @@ class GameObject():
         self.animationFrames = []
         self.animations = {}
         self.solid = True
+        self.interactable = False
     
     def ChangeSpriteImage(self, newImage):
         self.sprite.image = newImage
@@ -21,4 +22,6 @@ class GameObject():
         #pass here because our default gameObject doesn't update
         pass
 
+    def Interact(self):
+        pass
 

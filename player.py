@@ -154,7 +154,31 @@ class Player(GameObject.GameObject):
         self.holding.sprite.rect.y = self.sprite.rect.y + self.holdingOffset[1]           
 
         if keysPressed[pygame.K_SPACE]:
+            #Handle interactions
+            interactables = self.game.FindAllInteractableGameObjects()
+            collidingInteractables = []
+            if self.facing == "Up":
+                self.sprite.rect.y -= 1
+                collidingInteractables.extend(self.game.GetCollisionWithObjects(self.sprite.rect, interactables))
+                self.sprite.rect.y += 1
+            if self.facing == "Down":
+                self.sprite.rect.y += 1
+                collidingInteractables.extend(self.game.GetCollisionWithObjects(self.sprite.rect, interactables))
+                self.sprite.rect.y -= 1
+            if self.facing == "Left":
+                self.sprite.rect.x -= 1
+                collidingInteractables.extend(self.game.GetCollisionWithObjects(self.sprite.rect, interactables))
+                self.sprite.rect.x += 1
+            if self.facing == "Right":
+                self.sprite.rect.x += 1
+                collidingInteractables.extend(self.game.GetCollisionWithObjects(self.sprite.rect, interactables))
+                self.sprite.rect.x -= 1
+            for obj in collidingInteractables:
+                obj.Interact()
+                      
+                
             self.holding.Use(self.facing)
+            
         self.Animate()
         
             

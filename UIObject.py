@@ -10,6 +10,7 @@ class UIObject():
         self.game.AddToVisibleSpriteGroup(self.sprite, 1)
         self.game.gameObjects.append(self)
         self.solid = False
+        self.interactable = False
     
     def ChangeSpriteImage(self, newImage):
         self.sprite.image = newImage

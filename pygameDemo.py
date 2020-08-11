@@ -71,6 +71,14 @@ class Game():
             if obj.solid == True:
                 toReturn.append(obj)
         return toReturn
+
+    def FindAllInteractableGameObjects(self):
+        toReturn = []
+        for obj in self.gameObjects:
+            if obj.interactable == True:
+                toReturn.append(obj)
+        return toReturn
+    
     
     #Finds and checks collision with objects named name
     def GetCollision(self, parentRect, name):

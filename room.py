@@ -2,6 +2,7 @@ import moblin
 import tree 
 import coin
 import stone
+import signpost
 
 class Room():        
     roomObjects = []
@@ -23,8 +24,14 @@ class Room():
         f.close()
         xPosition = 0
         yPosition = 0
+        #Keep track of signposts to enter data for each"
+        signposts = []
+        
         #Each line represents one row of our level data
         for line in lineStrings:
+            if line[0] == '"':
+                signposts.pop(0).text = line
+                
             columns = line.split(',')
             for column in columns:#Each column is one instance of our level info
                 #Check what our character is and create the appropriate object
@@ -45,6 +52,12 @@ class Room():
                     newMoblin.sprite.rect.x = xPosition   
                     newMoblin.sprite.rect.y = yPosition
                     self.roomObjects.append(newMoblin)
+                elif column == 'S':
+                    newSignPost = signpost.SignPost(game)
+                    newSignPost.sprite.rect.x = xPosition   
+                    newSignPost.sprite.rect.y = yPosition
+                    self.roomObjects.append(newSignPost)
+                    signposts.append(newSignPost)
                 xPosition += 16#Increment our position counters as we move on to the next character
             xPosition = 0
             yPosition += 16
