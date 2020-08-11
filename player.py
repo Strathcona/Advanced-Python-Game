@@ -57,6 +57,10 @@ class Player(GameObject.GameObject):
                 self.sprite.kill()
                 self.game.RemoveGameObject(self)
                 self.game.GameOver()
+                
+    def AddHealth(self, amount):
+        if amount + self.currentHealth <= self.maxHealth:
+            self.currentHealth += amount
 
     def SetAnimation(self, animationName):
         if animationName in self.animations and self.currentAnimation != animationName:

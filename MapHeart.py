@@ -13,7 +13,7 @@ class MapHeart(GameObject.GameObject):
     def Update(self):
         collisions = self.game.GetCollision(self.sprite.rect, "Player")
         for collision in collisions:
-            collision.coins += 1
+            collision.AddHealth(1)
             self.sprite.kill()
-            print("Coin Collected!")
+            print("Heart Collected!")
             self.game.RemoveGameObject(self)

@@ -2,6 +2,7 @@ import pygame
 import GameObject    
 import random
 import coin
+import MapHeart
 
 class Moblin(GameObject.GameObject):
     
@@ -41,8 +42,13 @@ class Moblin(GameObject.GameObject):
             self.sprite.kill()
             print("Moblin died!")
             self.game.RemoveGameObject(self)
-            if random.random() > 0.5:#50% to drop a coin
+            num = random.random()
+            if  num < 0.25:#25% to drop a coin
                 coin1 = coin.Coin(self.game)
                 coin1.sprite.rect.x = self.sprite.rect.x
                 coin1.sprite.rect.y = self.sprite.rect.y
+            elif num < 0.5:
+                heart1 = MapHeart.MapHeart(self.game)
+                heart1.sprite.rect.x = self.sprite.rect.x
+                heart1.sprite.rect.y = self.sprite.rect.y
                 
