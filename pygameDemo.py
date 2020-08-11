@@ -125,6 +125,24 @@ class Game():
             self.DrawSprites()
             playerCoinCounter.UpdateCoins(player1.coins)
             self.DrawToDisplay()
+            
+            #Check if our player has moved off the current room
+            if player1.sprite.rect.x > 276:
+                self.currentRoom[0] -= 1
+                self.ChangeRoom()
+                player1.sprite.rect.x = 0
+            elif player1.sprite.rect.x < -20:
+                self.currentRoom[0] += 1
+                self.ChangeRoom()
+                player1.sprite.rect.x = 256
+            if player1.sprite.rect.y > 276:
+                self.currentRoom[1] += 1     
+                self.ChangeRoom()
+                player1.sprite.rect.y = 0
+            elif player1.sprite.rect.y < -20:
+                self.currentRoom[1] -= 1
+                self.ChangeRoom()
+                player1.sprite.rect.y = 256
 
             playerHealthBar.UpdateHealth(player1.currentHealth)
             self.CleanUp()
