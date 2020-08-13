@@ -15,11 +15,9 @@ class SignPost(GameObject.GameObject):
         self.cooldownTimer = 0 
         
     def Interact(self):
-        if self.cooldownTimer <= 0:
-            print(self.text)
-            self.cooldownTimer = self.cooldown
-    
+        textBox = self.game.FindGameObject("Text Box")
+        textBox.ShowText(self.text)          
+            
+            
     def Update(self):
-        if self.cooldownTimer > 0:
-            self.cooldownTimer -= 1
-        
+        pass

@@ -4,6 +4,7 @@ import player
 import PlayerHealthBar
 import uiCoinCounter
 import room
+import uitextbox
 
 
 class Game():
@@ -117,7 +118,9 @@ class Game():
         self.ChangeRoom()
         playerHealthBar = PlayerHealthBar.PlayerHealthBar()
         playerHealthBar.CreateHealthBar(self, player1.maxHealth)
-        playerCoinCounter = uiCoinCounter.UICoinCounter(self)
+        playerCoinCounter = uiCoinCounter.UICoinCounter(self)        
+        textBox = uitextbox.UITextBox(self)
+        
         #Main Game loop
         while True:
             time.sleep(0.016)
