@@ -11,6 +11,7 @@ class UIObject():
         self.game.gameObjects.append(self)
         self.solid = False
         self.interactable = False
+        self.updatesWhenTextBoxOpen = False
     
     def ChangeSpriteImage(self, newImage):
         self.sprite.image = newImage

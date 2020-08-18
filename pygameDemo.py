@@ -17,6 +17,7 @@ class Game():
         self.removedGameObjects = []
         self.currentRoom = [1,1]
         self.room = room.Room()
+        self.textBoxOpen = False;
         pygame.init()
         self.Run()
         
@@ -41,7 +42,11 @@ class Game():
     #Calls the update function of our gameObjects
     def Update(self):
         for gameObject in self.gameObjects:
-            gameObject.Update()
+            if self.textBoxOpen :
+                if gameObject.updatesWhenTextBoxOpen:
+                    gameObject.Update()
+            else:
+                gameObject.Update()
         
     #Performs any clean up actions before the end of the frame    
     def CleanUp(self):
@@ -79,7 +84,6 @@ class Game():
             if obj.interactable == True:
                 toReturn.append(obj)
         return toReturn
-    
     
     #Finds and checks collision with objects named name
     def GetCollision(self, parentRect, name):

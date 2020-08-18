@@ -13,6 +13,7 @@ class GameObject():
         self.animations = {}
         self.solid = True
         self.interactable = False
+        self.updatesWhenTextBoxOpen = False
     
     def ChangeSpriteImage(self, newImage):
         self.sprite.image = newImage

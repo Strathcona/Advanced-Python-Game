@@ -16,6 +16,7 @@ class UITextBox(UIObject.UIObject):
     def ShowText(self, text):
         #Add UITextBox background image to the list of visible sprites
         self.game.AddToVisibleSpriteGroup(self.sprite, 2)
+        self.game.textBoxOpen = True
 
         #Create a surface with font.render        
         textSurface = self.font.render(text,1,(0,0,0))
@@ -31,5 +32,6 @@ class UITextBox(UIObject.UIObject):
     def Hide(self):
         self.sprite.kill()
         self.textSprite.kill()
+        self.game.textBoxOpen = False
 
          
