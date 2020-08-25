@@ -3,6 +3,7 @@ import tree
 import coin
 import stone
 import signpost
+import transport
 
 class Room():        
     roomObjects = []
@@ -27,16 +28,28 @@ class Room():
         #Keep track of signposts to enter data for each"
         signposts = []
         
+        #Keep track of doors
+        doors = []
+        
         #Each line represents one row of our level data
         for line in lineStrings:
             if line[0] == '"':
                 signposts.pop(0).text = line
+            elif line[0] == '[':
+                doors.pop(0).SetDestination(line)
+            
                 
             columns = line.split(',')
             for column in columns:#Each column is one instance of our level info
                 #Check what our character is and create the appropriate object
                 if column == '_':
                     pass
+                elif column == 'D':
+                    newTransport = transport.Transport(game)
+                    newTransport.sprite.rect.x = xPosition
+                    newTransport.sprite.rect.y = yPosition
+                    self.roomObjects.append(newTransport)
+                    doors.append(newTransport)
                 elif column == 'T':
                     newTree = tree.Tree(game)
                     newTree.sprite.rect.x = xPosition

@@ -15,7 +15,7 @@ class Game():
         self.visibleSpriteGroup = pygame.sprite.LayeredUpdates()
         self.gameObjects = []
         self.removedGameObjects = []
-        self.currentRoom = [1,1]
+        self.currentRoom = [1,1,1]
         self.room = room.Room()
         self.textBoxOpen = False;
         pygame.init()
@@ -102,10 +102,18 @@ class Game():
                 collisions.append(obj)
         return collisions
     
+    def SetCurrentRoom(self,x,y,z):
+        self.currentRoom[0] =x
+        self.currentRoom[1] =y
+        self.currentRoom[2] =z
+        print(self.currentRoom)
+        self.room.Clear()
+        self.room.LoadRoomFromCSV(str(self.currentRoom[0])+','+str(self.currentRoom[1])+','+str(self.currentRoom[2]),self)
+    
     def ChangeRoom(self):
         print(self.currentRoom)
         self.room.Clear()
-        self.room.LoadRoomFromCSV(str(self.currentRoom[0])+','+str(self.currentRoom[1]),self)
+        self.room.LoadRoomFromCSV(str(self.currentRoom[0])+','+str(self.currentRoom[1])+','+str(self.currentRoom[2]),self)
         
     def GameOver(self):
         gameOverSprite = pygame.sprite.Sprite()
