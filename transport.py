@@ -7,7 +7,7 @@ class Transport(GameObject.GameObject):
         super(Transport,self).__init__(game)
         self.destination = [0,0,0]
         self.solid = False
-        self.ChangeSpriteImage(pygame.image.load("Images/SignPost.png"))
+        self.ChangeSpriteImage(pygame.image.load("Images/Doorway.png"))
         
     def SetDestination(self, destinationString):
         self.destination[0] = int(destinationString[1])

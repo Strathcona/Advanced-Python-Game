@@ -1,9 +1,10 @@
 import moblin
 import tree 
-import coin
 import stone
 import signpost
 import transport
+import house
+import wall
 
 class Room():        
     roomObjects = []
@@ -31,6 +32,9 @@ class Room():
         #Keep track of doors
         doors = []
         
+        #Keep track of walls so we can call setWallSprite
+        walls = []
+        
         #Each line represents one row of our level data
         for line in lineStrings:
             if line[0] == '"':
@@ -44,6 +48,17 @@ class Room():
                 #Check what our character is and create the appropriate object
                 if column == '_':
                     pass
+                elif column == 'W':
+                    newWall = wall.Wall(game)
+                    newWall.sprite.rect.x = xPosition
+                    newWall.sprite.rect.y = yPosition
+                    self.roomObjects.append(newWall)
+                    walls.append(newWall)
+                elif column == 'H':
+                    newHouse = house.House(game)
+                    newHouse.sprite.rect.x = xPosition
+                    newHouse.sprite.rect.y = yPosition
+                    self.roomObjects.append(newHouse)
                 elif column == 'D':
                     newTransport = transport.Transport(game)
                     newTransport.sprite.rect.x = xPosition
@@ -74,3 +89,6 @@ class Room():
                 xPosition += 16#Increment our position counters as we move on to the next character
             xPosition = 0
             yPosition += 16
+            
+        for w in walls:
+            w.SetWallSprite()
