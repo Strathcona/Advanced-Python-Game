@@ -46,6 +46,8 @@ class Room():
             columns = line.split(',')
             for column in columns:#Each column is one instance of our level info
                 #Check what our character is and create the appropriate object
+                print("Creating object "+column+" at "+str(xPosition)+","+str(yPosition))
+                column = column[0]
                 if column == '_':
                     pass
                 elif column == 'W':

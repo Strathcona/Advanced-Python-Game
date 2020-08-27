@@ -90,8 +90,9 @@ class Game():
         objectsWithName = self.FindAllGameObjects(name)
         collisions = []
         for obj in objectsWithName:
-            if parentRect.colliderect(obj.sprite.rect):
-                collisions.append(obj)
+            if parentRect != obj.sprite.rect:#can't collid with itself
+                if parentRect.colliderect(obj.sprite.rect):
+                    collisions.append(obj)
         return collisions
     
     #Finds collisions inside of a list of objects
