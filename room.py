@@ -5,6 +5,7 @@ import signpost
 import transport
 import house
 import wall
+import npc
 
 class Room():        
     roomObjects = []
@@ -88,6 +89,11 @@ class Room():
                     newSignPost.sprite.rect.y = yPosition
                     self.roomObjects.append(newSignPost)
                     signposts.append(newSignPost)
+                elif column == 'N':
+                    newNPC = npc.NPC(game)
+                    newNPC.sprite.rect.x = xPosition   
+                    newNPC.sprite.rect.y = yPosition
+                    self.roomObjects.append(newNPC)
                 xPosition += 16#Increment our position counters as we move on to the next character
             xPosition = 0
             yPosition += 16
