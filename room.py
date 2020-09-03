@@ -38,12 +38,17 @@ class Room():
         
         #Each line represents one row of our level data
         for line in lineStrings:
+            if len(line) == 0:
+                continue
+            
             if line[0] == '"':
+                line = line.split('"')[0]
                 signposts.pop(0).text = line
+                continue
             elif line[0] == '[':
                 doors.pop(0).SetDestination(line)
-            
-                
+                continue               
+                    
             columns = line.split(',')
             for column in columns:#Each column is one instance of our level info
                 #Check what our character is and create the appropriate object

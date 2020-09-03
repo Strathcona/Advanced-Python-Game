@@ -169,7 +169,7 @@ class Game():
                 self.ChangeRoom()
                 player1.sprite.rect.y = 256
 
-            playerHealthBar.UpdateHealth(player1.currentHealth)
+            playerHealthBar.UpdateHealth(player1.currentHealth, player1.maxHealth)
             self.CleanUp()
 
             
